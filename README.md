@@ -198,5 +198,5 @@ Este enfoque permite:
 
 ## 👤 Autor
 
-**Jorge Vasquez**  
+**Jorge Vasquez Prado**  
 Ingeniería de procesos · Optimización industrial
