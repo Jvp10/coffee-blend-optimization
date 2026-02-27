@@ -1,8 +1,8 @@
-# ☕ Formulación Óptima de Mezcla de Café
+# Formulación Óptima de Mezcla de Café
 
 > Optimización de la composición de una mezcla de café utilizando Programación Lineal y análisis de sensibilidad para minimizar costos cumpliendo requerimientos nutricionales.
 
-## 🚀 Resumen Ejecutivo
+## Resumen Ejecutivo
 
 Este proyecto desarrolla un modelo de **programación lineal** para determinar la combinación óptima de ingredientes en una formulación de café que minimiza el costo total, cumpliendo simultáneamente restricciones nutricionales y de formulación.
 
@@ -13,7 +13,7 @@ La solución incorpora:
 - ✔️ Evaluación de robustez mediante simulación Monte Carlo  
 - ✔️ Perfil nutricional de la mezcla óptima  
 
-## 🧠 Problema
+## Problema
 
 En procesos de formulación de alimentos es común que:
 
@@ -26,7 +26,7 @@ En procesos de formulación de alimentos es común que:
 - Falta de análisis de sensibilidad  
 - Riesgo ante variabilidad de precios  
 
-## 🎯 Objetivos
+## Objetivos
 
 ### Objetivo general
 
@@ -42,7 +42,7 @@ Determinar la mezcla de café de **mínimo costo** que cumpla con todos los requ
 
 ---
 
-## 🏗️ Arquitectura de la Solución
+## Arquitectura de la Solución
 
 Pipeline
 
@@ -56,7 +56,7 @@ Pipeline
 
 - Simulación: variación aleatoria de precios
 
-## ⚙️ Stack Tecnológico
+## Stack Tecnológico
 
 - Lenguaje: Python
 
@@ -68,7 +68,7 @@ Pipeline
 
 - Fuente de datos: Excel
 
-## 🔬 Metodología
+## Metodología
 1. Formulación del modelo
 
 - Variables de decisión
@@ -119,7 +119,7 @@ Hallazgos clave
 
 Objetivo: cuantificar la robustez económica del modelo.
 
-## 📈 Resultados
+## Resultados
 
 - Se obtuvo una mezcla de costo mínimo factible
 
@@ -135,7 +135,7 @@ Objetivo: cuantificar la robustez económica del modelo.
 
 - Base para decisiones de reformulación
 
-## 🔒 Nota sobre el Código
+## Nota sobre el Código
 
 El código fuente no se publica por tratarse de propiedad intelectual del autor.
 
@@ -155,4 +155,4 @@ Para revisión técnica o colaboración profesional, contactar directamente.
 
 Jorge Vasquez
 
-Ingeniería de procesos / Optimization Analyst
+Ingeniería de procesos - 
