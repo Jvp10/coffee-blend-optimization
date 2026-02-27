@@ -71,71 +71,69 @@ Pipeline
 ## 🔬 Metodología
 1. Formulación del modelo
 
-Variables de decisión
+- Variables de decisión
 
-Proporción de cada ingrediente en la mezcla
+- Proporción de cada ingrediente en la mezcla
 
-Función objetivo
+- Función objetivo
 
-Minimizar costo total de la formulación
+- Minimizar costo total de la formulación
 
 Restricciones
 
-Balance de masa (la mezcla suma 1)
+- Balance de masa (la mezcla suma 1)
 
-Límites nutricionales mínimos y máximos
+- Límites nutricionales mínimos y máximos
 
-Cotas por ingrediente (LB/UB)
+- Cotas por ingrediente (LB/UB)
 
 ## Análisis de sensibilidad
 
 Se evaluó:
 
-Rangos de optimalidad de coeficientes
+- Rangos de optimalidad de coeficientes
 
-Precios sombra de restricciones
+- Precios sombra de restricciones
 
-Holguras del modelo
+- Holguras del modelo
 
-Rangos RHS de factibilidad
+- Rangos RHS de factibilidad
 
 Hallazgos clave
 
-La restricción de mezcla es la única activa
+- La restricción de mezcla es la única activa
 
-Varias restricciones nutricionales presentan holgura
+- Varias restricciones nutricionales presentan holgura
 
-La solución muestra robustez moderada ante cambios de costos
+- La solución muestra robustez moderada ante cambios de costos
 
 ## Simulación Monte Carlo
 
-Se ejecutaron 100 corridas variando ±20% los precios de ingredientes para evaluar:
+- Se ejecutaron 100 corridas variando ±20% los precios de ingredientes para evaluar:
 
-Distribución del costo óptimo
+- Distribución del costo óptimo
 
-Estabilidad de la mezcla
+- Estabilidad de la mezcla
 
-Riesgo de incremento de costo
+- Riesgo de incremento de costo
 
 Objetivo: cuantificar la robustez económica del modelo.
 
 ## 📈 Resultados
 
-Resultados cualitativos
+- Se obtuvo una mezcla de costo mínimo factible
 
-Se obtuvo una mezcla de costo mínimo factible
+- La solución es estable ante variaciones moderadas de precios
 
-La solución es estable ante variaciones moderadas de precios
+- Las restricciones nutricionales cumplen para el costo establecido
 
-Las restricciones nutricionales no son actualmente vinculantes
+## Valor analítico
 
-Valor analítico
+- Identificación de restricciones críticas
 
-Identificación de restricciones críticas
+- Medición de robustez del modelo
 
-Medición de robustez del modelo
-
-Base para decisiones de reformulación
+- Base para decisiones de reformulación
 
 ## 🔒 Nota sobre el Código
 
@@ -156,4 +154,5 @@ Para revisión técnica o colaboración profesional, contactar directamente.
 👤 Autor
 
 Jorge Vasquez
+
 Ingeniería de procesos / Optimization Analyst
