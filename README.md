@@ -109,7 +109,7 @@ Hallazgos clave
 
 ## Simulación Monte Carlo
 
-- Se ejecutaron 100 corridas variando ±20% los precios de ingredientes para evaluar:
+- Se ejecutaron 1000 corridas variando ±20% los precios de ingredientes para evaluar:
 
 - Distribución del costo óptimo
 
