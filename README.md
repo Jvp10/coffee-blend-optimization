@@ -155,4 +155,4 @@ Para revisión técnica o colaboración profesional, contactar directamente.
 
 Jorge Vasquez
 
-Ingeniería de procesos - 
+Ingeniería de procesos · Optimización Industrial
