@@ -1,158 +1,198 @@
 # Formulación Óptima de Mezcla de Café
 
-> Optimización de la composición de una mezcla de café utilizando Programación Lineal y análisis de sensibilidad para minimizar costos cumpliendo requerimientos nutricionales.
+> Optimización de la composición de una mezcla de café mediante Programación Lineal para minimizar costos cumpliendo requerimientos nutricionales y de formulación.
+
+---
 
 ## Resumen Ejecutivo
 
-Este proyecto desarrolla un modelo de **programación lineal** para determinar la combinación óptima de ingredientes en una formulación de café que minimiza el costo total, cumpliendo simultáneamente restricciones nutricionales y de formulación.
+Este proyecto desarrolla un modelo de **programación lineal (PL)** para determinar la combinación óptima de ingredientes en una formulación de café que minimiza el costo total, cumpliendo simultáneamente restricciones nutricionales y operativas.
 
-La solución incorpora:
+La solución integra:
 
 - ✔️ Optimización matemática con Gurobi  
-- ✔️ Análisis de sensibilidad completo  
-- ✔️ Evaluación de robustez mediante simulación Monte Carlo  
-- ✔️ Perfil nutricional de la mezcla óptima  
+- ✔️ Análisis de sensibilidad del modelo  
+- ✔️ Evaluación de robustez mediante simulación Monte Carlo (1000 corridas)  
+- ✔️ Verificación del perfil nutricional de la mezcla óptima  
+
+El enfoque permite cuantificar el desempeño económico de la formulación y apoyar la toma de decisiones en entornos con incertidumbre de precios.
+
+---
 
 ## Problema
 
-En procesos de formulación de alimentos es común que:
+En procesos de formulación de alimentos es frecuente que:
 
 > “No se dispone de información cuantitativa que permita caracterizar el desempeño operativo del proceso, dificultando la evaluación de su comportamiento y la toma de decisiones.”
 
-**Brechas identificadas**
+### Brechas identificadas
 
-- Formulación basada en criterios manuales  
-- Costos no optimizados  
-- Falta de análisis de sensibilidad  
-- Riesgo ante variabilidad de precios  
+- Formulación basada en criterios manual  
+- Costos no optimizados sistemáticamente  
+- Ausencia de análisis de sensibilidad  
+- Exposición al riesgo por variabilidad de precios  
+
+---
 
 ## Objetivos
 
 ### Objetivo general
 
-Determinar la mezcla de café de **mínimo costo** que cumpla con todos los requerimientos nutricionales y de formulación.
+Determinar la mezcla de café de **mínimo costo** que cumpla con los requerimientos nutricionales y de formulación.
 
 ### Objetivos específicos
 
 - Modelar el problema como **programación lineal**  
-- Incorporar restricciones nutricionales  
-- Analizar **precios sombra y rangos de optimalidad**  
+- Incorporar restricciones nutricionales explícitas  
+- Analizar sensibilidad del modelo (holguras y precios sombra)  
 - Evaluar robustez frente a variaciones de precios  
-- Obtener el perfil nutricional final de la mezcla  
+- Obtener el perfil nutricional de la mezcla óptima  
 
 ---
 
 ## Arquitectura de la Solución
 
-Pipeline
+**Pipeline analítico**
 
-- Ingesta: Excel con ingredientes y requerimientos
+1. **Ingesta de datos**  
+   - Excel con ingredientes y requerimientos  
 
-- Modelado: variables de decisión por ingrediente
+2. **Modelado matemático**  
+   - Variables de decisión por ingrediente  
+   - Función objetivo de costo mínimo  
+   - Restricciones de mezcla y nutrición  
 
-- Optimización: minimización de costo
+3. **Optimización**  
+   - Resolución con Gurobi  
 
-- Post-análisis: sensibilidad y robustez
+4. **Post-análisis**  
+   - Sensibilidad y holguras  
 
-- Simulación: variación aleatoria de precios
+5. **Simulación de incertidumbre**  
+   - Monte Carlo sobre precios  
+
+---
 
 ## Stack Tecnológico
 
-- Lenguaje: Python
+- **Lenguaje:** Python  
+- **Optimización:** Gurobi (gurobipy)  
+- **Análisis de datos:** pandas, numpy  
+- **Visualización:** matplotlib, plotly  
+- **Fuente de datos:** Excel  
 
-- Optimización: Gurobi (gurobipy)
-
-- Análisis de datos: pandas, numpy
-
-- Visualización: matplotlib, plotly
-
-- Fuente de datos: Excel
+---
 
 ## Metodología
-1. Formulación del modelo
 
-- Variables de decisión
+### Formulación del modelo
+
+**Variables de decisión**
 
 - Proporción de cada ingrediente en la mezcla
 
-- Función objetivo
+**Función objetivo**
 
-- Minimizar costo total de la formulación
+- Minimizar el costo total de la formulación
 
-Restricciones
+**Restricciones**
 
-- Balance de masa (la mezcla suma 1)
+- Balance de masa (∑xᵢ = 1)  
+- Límites nutricionales mínimos y máximos  
+- Cotas de inclusión por ingrediente (LB/UB)  
 
-- Límites nutricionales mínimos y máximos
-
-- Cotas por ingrediente (LB/UB)
+---
 
 ## Análisis de sensibilidad
 
-Se evaluó:
+Se evaluaron:
 
-- Rangos de optimalidad de coeficientes
+- Holguras de restricciones  
+- Precios sombra  
+- Comportamiento de la restricción de mezcla  
 
-- Precios sombra de restricciones
+### Hallazgos clave
 
-- Holguras del modelo
+- La restricción de mezcla actúa como principal limitante económica  
+- Varias restricciones nutricionales presentan holgura positiva  
+- La solución muestra robustez moderada ante cambios en costos  
 
-- Rangos RHS de factibilidad
-
-Hallazgos clave
-
-- La restricción de mezcla es la única activa
-
-- Varias restricciones nutricionales presentan holgura
-
-- La solución muestra robustez moderada ante cambios de costos
+---
 
 ## Simulación Monte Carlo
 
-- Se ejecutaron 1000 corridas variando ±20% los precios de ingredientes para evaluar:
+Se ejecutaron **1000 corridas** variando ±20% los precios de ingredientes para evaluar:
 
-- Distribución del costo óptimo
+- Distribución del costo óptimo  
+- Estabilidad de la solución  
+- Riesgo de incremento de costo  
 
-- Estabilidad de la mezcla
+**Propósito:** cuantificar la robustez económica del modelo bajo incertidumbre paramétrica.
 
-- Riesgo de incremento de costo
+---
 
-Objetivo: cuantificar la robustez económica del modelo.
+## Resultados principales
 
-## Resultados
+- Se obtuvo una mezcla factible de **costo mínimo**  
+- La solución permanece estable ante variaciones moderadas de precios  
+- Los requerimientos nutricionales se cumplen en la solución óptima  
+- La dispersión del costo indica **riesgo controlado**
 
-- Se obtuvo una mezcla de costo mínimo factible
+---
 
-- La solución es estable ante variaciones moderadas de precios
+## Cómo reproducir (entorno de referencia)
 
-- Las restricciones nutricionales cumplen para el costo establecido
+Este proyecto fue desarrollado en el siguiente entorno computacional:
 
-## Valor analítico
+- **Python:** 3.10+  
+- **Optimizador:** Gurobi (gurobipy)  
+- **Análisis de datos:** pandas, numpy  
+- **Visualización:** matplotlib, plotly  
+- **Fuente de datos:** archivos Excel  
 
-- Identificación de restricciones críticas
+### Flujo general de ejecución
 
-- Medición de robustez del modelo
+1. Carga de datos desde Excel (ingredientes y requerimientos)  
+2. Construcción del modelo de programación lineal  
+3. Optimización del costo de la mezcla con Gurobi  
+4. Análisis de sensibilidad (holguras y precios sombra)  
+5. Simulación Monte Carlo (1000 corridas, ±20% en costos)  
+6. Visualización de la distribución del costo óptimo  
 
-- Base para decisiones de reformulación
+### Notas
 
-## Nota sobre el Código
+- Los resultados publicados corresponden a ejecuciones reales del modelo.  
+- El repositorio documenta el enfoque metodológico y analítico.  
 
-El código fuente no se publica por tratarse de propiedad intelectual del autor.
+---
+
+## Nota sobre el código
+
+El código fuente completo no se publica por tratarse de propiedad intelectual del autor.
 
 Este repositorio tiene fines de portafolio y documenta:
 
-✔️ Enfoque matemático
-
-✔️ Arquitectura del modelo
-
-✔️ Metodología analítica
-
-✔️ Resultados obtenidos
+- ✔️ Enfoque matemático  
+- ✔️ Arquitectura del modelo  
+- ✔️ Metodología analítica  
+- ✔️ Resultados obtenidos  
 
 Para revisión técnica o colaboración profesional, contactar directamente.
 
-👤 Autor
+---
 
-Jorge Vasquez
+## Valor analítico
 
-Ingeniería de procesos · Optimización Industrial
+Este enfoque permite:
+
+- Identificar restricciones realmente vinculantes  
+- Cuantificar la robustez económica de la formulación  
+- Apoyar decisiones de reformulación y compras  
+- Reducir incertidumbre en planificación de costos  
+
+---
+
+## 👤 Autor
+
+**Jorge Vasquez**  
+Ingeniería de procesos · Optimización industrial
