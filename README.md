@@ -138,6 +138,10 @@ Se ejecutaron **1000 corridas** variando ±20% los precios de ingredientes para 
 - Los requerimientos nutricionales se cumplen en la solución óptima  
 - La dispersión del costo indica **riesgo controlado**
 
+## 📊 Distribución del costo óptimo
+
+![Histograma Monte Carlo](images/histograma_montecarlo.png)
+
 ---
 
 ## Cómo reproducir (entorno de referencia)
